@@ -11,9 +11,6 @@ import { setContext } from '@apollo/client/link/context';
 import { REPO_SEARCH } from './queries';
 
 const TestComp = (): JSX.Element => {
-  //  const { loading, error, data } = useQuery(GET_REPO_OWNER_NAME, {
-  //    variables: { language: 'english' }
-  //  });
   const { loading, error, data } = useQuery(REPO_SEARCH, {
     variables: { repoQuery: 'React', resNo: 5 }
   });
