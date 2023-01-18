@@ -10,7 +10,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: 'poe2/tsconfig.json'
+    project: 'tsconfig.json'
   },
   plugins: ['react'],
   rules: {
