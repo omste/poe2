@@ -8,11 +8,14 @@ import {
   useQuery
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { GET_REPO_OWNER_NAME } from './queries';
+import { REPO_SEARCH } from './queries';
 
 const TestComp = (): JSX.Element => {
-  const { loading, error, data } = useQuery(GET_REPO_OWNER_NAME, {
-    variables: { language: 'english' }
+  //  const { loading, error, data } = useQuery(GET_REPO_OWNER_NAME, {
+  //    variables: { language: 'english' }
+  //  });
+  const { loading, error, data } = useQuery(REPO_SEARCH, {
+    variables: { repoQuery: 'React', resNo: 5 }
   });
   console.log('inside func');
   if (loading) return <div>loading...</div>;
