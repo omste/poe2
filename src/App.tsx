@@ -1,24 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  useQuery
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { GET_REPO_OWNER_NAME } from './queries';
+
+const TestComp = (): JSX.Element => {
+  const { loading, error, data } = useQuery(GET_REPO_OWNER_NAME, {
+    variables: { language: 'english' }
+  });
+  console.log('inside func');
+  if (loading) return <div>loading...</div>;
+  if (error !== undefined) return <h1>Error found</h1>;
+  console.log(error);
+  if (data !== undefined) {
+    console.log(data);
+  }
+  console.log('all good func');
+  return <div>Hello om !</div>;
+};
 
 const App = (): JSX.Element => {
+  const httpLink = createHttpLink({
+    uri: 'https://api.github.com/graphql'
+  });
+  const authLink = setContext((_, { headers }) => {
+    const token = process.env.REACT_APP_GIT_KEY;
+    return {
+      headers: {
+        ...headers,
+        authorization:
+          token !== null && token !== '' && token !== undefined ? `Bearer ${token}` : ''
+      }
+    };
+  });
+
+  const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    link: authLink.concat(httpLink)
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <TestComp />
+    </ApolloProvider>
   );
 };
 
