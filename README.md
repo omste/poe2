@@ -11,7 +11,7 @@ Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-```to run replace the .env file in the route directory with that supplied, or remane .env.example to .env and replace the not-token with your real github token```
+```to run replace the .env file in the root directory with that supplied, or remane .env.example to .env and replace the not-token with your real github token```
 
 ### `npm test`
 
@@ -49,5 +49,6 @@ Pretifies things
 * same goes for queries, types, and utils
 * build process quality gates e2e testing, sonarcube, lighhouse (or other WACG) and perhaps browserstack
 * ordering, array slicing, a chat with the PO about how much should be SSR, etc.
+* url to reflect search term, ordering, etc
 
 
