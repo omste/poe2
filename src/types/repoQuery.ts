@@ -1,4 +1,4 @@
-export interface queryResult {
+export interface QueryResult {
   search: Search;
 }
 export interface Search {
