@@ -47,6 +47,7 @@ Pretifies things
 ## What I would like if this were a real project
 
 * component library outside of main src folders
+* refactor data fetching out of the components
 * same goes for queries, types, and utils
 * build process quality gates e2e testing, sonarcube, lighhouse (or other WACG) and perhaps browserstack
 * ordering, array slicing, a chat with the PO about how much should be SSR, etc.
