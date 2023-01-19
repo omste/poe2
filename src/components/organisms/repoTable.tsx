@@ -2,12 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import { useState, useEffect } from 'react';
 import { REPO_SEARCH } from '../../queries/queries';
 import { QueryResult, EdgesEntity } from '../../types/repoQuery';
-
-export enum SortColumns {
-  Name,
-  Stars,
-  Forks
-}
+import { RepoRow } from '../atoms/repoRow';
 
 export interface RepoTableProps {
   resultSet: EdgesEntity[] | null | undefined;
@@ -15,12 +10,31 @@ export interface RepoTableProps {
 
 export const RepoTable = ({ resultSet }: RepoTableProps): JSX.Element => {
   console.log(resultSet);
-  return <div>hello table</div>;
+  if (resultSet === null || resultSet === undefined) {
+    return <h1>no results</h1>;
+  }
+  return (
+    <div>
+      {resultSet.map((res, idx) => {
+        return (
+          <div key={res.node.id}>
+            <RepoRow
+              idx={idx}
+              title={res.node.name}
+              url={res.node.url}
+              stars={`${res.node.stargazerCount}`}
+              forks={`${res.node.forkCount}`}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export const RepoPage = (): JSX.Element => {
   const repoQuery = 'react';
-  const resNo = 5;
+  const resNo = 50;
   const [getSearchTerm, setSearchTerm] = useState<string>(repoQuery);
   const [getData, { loading, error, data }] = useLazyQuery<QueryResult>(REPO_SEARCH, {
     variables: { repoQuery: getSearchTerm, resNo }
@@ -44,7 +58,6 @@ export const RepoPage = (): JSX.Element => {
 
   return (
     <div>
-      Hello om !
       <input
         type="text"
         value={getSearchTerm}
@@ -52,7 +65,8 @@ export const RepoPage = (): JSX.Element => {
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
-      />
+      />{' '}
+      search term
       <RepoTable resultSet={data?.search.edges} />
     </div>
   );
