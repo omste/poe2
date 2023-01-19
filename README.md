@@ -36,6 +36,7 @@ Pretifies things
 
 ## Known Issues
 
+* some high severity npm issues that need a fixing
 * no debounce on changing search term
 * set up (sprint zero style work) of eslint, husky, prettier, module compatibility, npm version took too long
 * no design lib, usually I like to use tailwind
