@@ -15,8 +15,11 @@ export const RepoPage = (): JSX.Element => {
   useEffect(() => {
     // TO DO : debounce this
     // TO DO : fix TS promise error
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    getData();
+
+    if (getSearchTerm.length > 2) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      getData();
+    }
   }, []);
 
   if (loading) return <div>loading...</div>;

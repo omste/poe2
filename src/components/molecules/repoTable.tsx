@@ -12,6 +12,11 @@ export const RepoTable = ({ resultSet }: RepoTableProps): JSX.Element => {
   }
   return (
     <div>
+      <div style={{ columnCount: 3, padding: 10, marginTop: 0, backgroundColor: '#ccf' }}>
+        <p style={{ marginTop: 0 }}>name</p>
+        <p>stars</p>
+        <p>forks</p>
+      </div>
       {resultSet.map((res, idx) => {
         return (
           <div key={res.node.id}>
