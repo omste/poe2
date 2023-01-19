@@ -6,7 +6,7 @@ export interface RepoRowProps {
   forks: string;
 }
 
-const chooseBg = (idx: number): string => {
+export const chooseBg = (idx: number): string => {
   if (idx % 2 === 0) {
     return '#aaa';
   }
