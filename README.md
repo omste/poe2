@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Omri Suleiman demo project
+`` omrisuleiman15 at gmail d0t com ``
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Uses React to get some github GQL data
 
-## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+
+```to run replace the .env file in the route directory with that supplied, or remane .env.example to .env and replace the not-token with your real github token```
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run lint`
 
-### `npm run eject`
+Checks linting for project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `npm run lint:fix`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Fixes linting for project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `npm run format`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Pretifies things
 
-## Learn More
+## Known Issues
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* no debounce on changing search term
+* set up (sprint zero style work) of eslint, husky, prettier, module compatibility, npm version took too long
+* no design lib, usually I like to use tailwind
+* unit test coverage is sketchy as
+* no dockerisation (not created many docker containers and didn't want to do it badly)
+* no e2e tests (cypress is my fave for this)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## What I would like if this were a real project
+
+* component library outside of main src folders
+* same goes for queries, types, and utils
+* build process quality gates e2e testing, sonarcube, lighhouse (or other WACG) and perhaps browserstack
+* ordering, array slicing, a chat with the PO about how much should be SSR, etc.
+
+
