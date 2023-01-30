@@ -13,7 +13,6 @@ export const RepoPage = (): JSX.Element => {
   });
 
   useEffect(() => {
-    // TO DO : debounce this
     // TO DO : fix TS promise error
 
     if (getSearchTerm.length > 2) {
